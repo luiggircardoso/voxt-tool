@@ -1,50 +1,43 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
 
-function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
+import { Menu } from "lucide-react";
+import { useEffect, useState } from "react";
 
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
-  }
+function App() {
+  const [sidebarVisible, setSidebarVisible] = useState(true);
+  const [bgGreen, setBgGreen] = useState(false);
+
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.ctrlKey && e.code === "Space") {
+        setSidebarVisible((v) => !v);
+        setBgGreen((g) => !g);
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
-
-      <div className="row">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
+    <main className={`flex min-h-screen transition-colors duration-300 ${bgGreen ? "bg-lime-400" : "bg-black"}`}>
+      {sidebarVisible && <Sidebar />}
+      {/* Main content placeholder */}
+      <div className="flex-1" />
     </main>
+  );
+}
+
+function Sidebar() {
+  return (
+    <aside className="bg-[#181818] w-1/5 max-w-[415px] min-w-[220px] min-h-screen flex flex-col relative p-4 sm:p-6 gap-4 box-border z-10">
+      <div className="absolute left-[17px] top-[18px] text-white text-[22px] sm:text-[29px] font-normal leading-[150%] font-sans select-none">PixelPal</div>
+      <button
+        className="absolute right-7 top-[18px] w-11 h-11 bg-[#1D1D1D] rounded-[9px] border border-[#313131] flex items-center justify-center text-white hover:bg-[#232323] transition-colors"
+        aria-label="Sidebar Action"
+      >
+        <Menu />  
+      </button>
+    </aside>
   );
 }
 
