@@ -44,7 +44,7 @@ function Sidebar({ onToggle }: SidebarProps) {
   return (
     <aside className="bg-[#181818] w-1/5 max-w-[415px] min-w-[220px] min-h-screen flex flex-col relative p-4 sm:p-6 gap-4 box-border border-r-gray-500 border-1 z-10">
       <div className="flex items-center justify-between w-full mb-4">
-        <span className="text-white text-[22px] sm:text-[29px] font-normal leading-[150%] font-sans select-none">PixelPal</span>
+        <span className="text-white text-[22px] sm:text-[29px] font-normal leading-[150%] font-sans select-none libre-caslon italic">PixelPal</span>
         <div className="relative group ml-2">
           <button
             onClick={onToggle}

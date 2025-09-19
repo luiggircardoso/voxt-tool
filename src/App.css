@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'LibreCaslon';
+  src: url('./fonts/LibreCaslonText-Regular.ttf') format('truetype');
+}
+
+.libre-caslon {
+  font-family: 'LibreCaslon', serif;
+}
 .content {
   background-size: 40px 40px;
   background-image: radial-gradient(circle, #4e4e4e 1px, rgba(0, 0, 0, 0) 1px);
