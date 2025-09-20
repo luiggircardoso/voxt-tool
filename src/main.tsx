@@ -9,8 +9,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   </React.StrictMode>,
 );
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.addEventListener('contextmenu', (e) => {
+document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("contextmenu", (e) => {
     e.preventDefault();
   });
 });

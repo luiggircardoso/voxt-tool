@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'LibreCaslon';
-  src: url('./fonts/LibreCaslonText-Regular.ttf') format('truetype');
+  font-family: "LibreCaslon";
+  src: url("./fonts/LibreCaslonText-Regular.ttf") format("truetype");
 }
 
 .libre-caslon {
-  font-family: 'LibreCaslon', serif;
+  font-family: "LibreCaslon", serif;
 }
 .content {
   background-size: 40px 40px;
