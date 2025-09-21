@@ -1,15 +1,15 @@
 import "./App.css";
-import Sidebar from "./components/Sidebar"
+import Sidebar from "./components/Sidebar";
 import Sprite from "./components/Sprite";
 import { useEffect, useState } from "react";
+
+import {
+  sendNotification
+} from '@tauri-apps/plugin-notification';
 
 function App() {
   const [sidebarVisible, setSidebarVisible] = useState(true);
   const [bgGreen, setBgGreen] = useState(false);
-
-  const [defaultState, setDefaultState] = useState("");
-  const [talkingState, setTalkingState] = useState("");
-  const [image, setImage] = useState("");
 
   const toggleSidebarAndBg = () => {
     setSidebarVisible((v) => !v);
@@ -17,27 +17,29 @@ function App() {
   };
 
   useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
+    function handleKeyDown(e) {
       if (e.ctrlKey && e.code === "Space") {
-        e.preventDefault(); // Good practice to prevent default space behavior
+        e.preventDefault();
         toggleSidebarAndBg();
       }
     }
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+    
+  useEffect(() => {
+    if (!sidebarVisible) {
+        sendNotification({ title: 'Sidebar Hidden', body: 'Click CTRL + Space to make it visible again.' });
+    }
+  }, [sidebarVisible]);
 
   return (
     <main
-      className={`flex min-h-screen transition-colors duration-300 ${bgGreen ? "bg-lime-400" : "bg-[#111111]"}`}
+      className={`flex min-h-screen transition-colors duration-300 ${
+        bgGreen ? "bg-lime-400" : "bg-[#111111]"
+      }`}
     >
-      <Sidebar 
-        isVisible={sidebarVisible} 
-        onToggle={toggleSidebarAndBg}
-        setDefaultState={setDefaultState}
-        setTalkingState={setTalkingState} 
-        setImage={setImage}
-      />
+      <Sidebar isVisible={sidebarVisible} onToggle={toggleSidebarAndBg} />
       <Sprite sidebarVisible={sidebarVisible} />
     </main>
   );
