@@ -15,10 +15,24 @@
         "title": "Voxt Tool",
         "width": 800,
         "height": 600
+      },
+      {
+        "label": "settings",
+        "title": "Settings",
+        "width": 600,
+        "height": 400,
+        "alwaysOnTop": true,
+        "resizable": false,
+        "decorations": true,
+        "visible": false
       }
     ],
     "security": {
-      "csp": null
+      "csp": null,
+      "assetProtocol": {
+        "enable": true,
+        "scope": ["**"]
+      }
     }
   },
   "plugins": {

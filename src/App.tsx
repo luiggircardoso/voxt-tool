@@ -2,6 +2,7 @@ import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Sprite from "./components/Sprite";
 import { useEffect, useState } from "react";
+import { SpriteProvider } from './contexts/SpriteContext';
 
 import {
   sendNotification
@@ -34,14 +35,16 @@ function App() {
   }, [sidebarVisible]);
 
   return (
-    <main
-      className={`flex min-h-screen transition-colors duration-300 ${
-        bgGreen ? "bg-lime-400" : "bg-[#111111]"
-      }`}
-    >
-      <Sidebar isVisible={sidebarVisible} onToggle={toggleSidebarAndBg} />
-      <Sprite sidebarVisible={sidebarVisible} />
-    </main>
+    <SpriteProvider>
+      <main
+        className={`flex min-h-screen transition-colors duration-300 ${
+          bgGreen ? "bg-lime-400" : "bg-[#111111]"
+        }`}
+      >
+        <Sidebar isVisible={sidebarVisible} onToggle={toggleSidebarAndBg} />
+        <Sprite sidebarVisible={sidebarVisible} />
+      </main>
+    </SpriteProvider>
   );
 }
 

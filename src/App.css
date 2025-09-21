@@ -1,13 +1,20 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "LibreCaslon";
-  src: url("./fonts/LibreCaslonText-Regular.ttf") format("truetype");
+  font-family: "Inter";
+  src: url("./fonts/InterVariable.ttf") format("truetype");
 }
 
-.libre-caslon {
-  font-family: "LibreCaslon", serif;
+.inter {
+  font-family: "Inter", sans-serif;
 }
+
+
+.title {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+
 .content {
   background-size: 40px 40px;
   background-image: radial-gradient(circle, #4e4e4e 1px, rgba(0, 0, 0, 0) 1px);
@@ -15,4 +22,14 @@
 
 .no-dots {
   background-image: none;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-0.75px) translateY(-0.4px); }
+  20%, 40%, 60%, 80% { transform: translateX(0.75px) translateY(0.4px); }
+}
+
+.animate-shake {
+  animation: shake 0.6s ease-in-out infinite;
 }
