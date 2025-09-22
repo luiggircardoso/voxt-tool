@@ -18,7 +18,7 @@ function App() {
   };
 
   useEffect(() => {
-    function handleKeyDown(e) {
+    function handleKeyDown(e: { ctrlKey: any; code: string; preventDefault: () => void; }) {
       if (e.ctrlKey && e.code === "Space") {
         e.preventDefault();
         toggleSidebarAndBg();

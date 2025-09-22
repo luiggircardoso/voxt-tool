@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSprites } from '../contexts/SpriteContext';
 import { convertFileSrc } from '@tauri-apps/api/core';
 

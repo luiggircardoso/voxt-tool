@@ -1,7 +1,6 @@
-import { PlayIcon, PlusIcon, SettingsIcon, X, ChevronDown } from "lucide-react"
+import { PlayIcon, PlusIcon, X, ChevronDown } from "lucide-react"
 import { open } from '@tauri-apps/plugin-dialog';
 import { convertFileSrc } from '@tauri-apps/api/core';
-import { WebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { useState } from "react";
 import { useSprites, SpriteData } from '../contexts/SpriteContext';
 
@@ -158,7 +157,7 @@ export default function Sidebar({ isVisible, onToggle }: SidebarProps) {
                   </div>
                 );
               })}
-              
+
             </div>
           </div>
         )}
