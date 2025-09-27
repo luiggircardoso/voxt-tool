@@ -91,7 +91,7 @@ function Sprite({ sidebarVisible }: Props) {
         className={`
           select-none transition-all duration-500 ease-in-out object-contain
           ${sidebarVisible ? 'max-w-[50%] max-h-[50%]' : 'max-w-[60%] max-h-[60%]'}
-          ${currentSprite === talkingSprite ? 'animate-shake' : ''}
+          ${currentSprite && currentSprite === talkingSprite ? 'animate-shake' : ''}
           `}
         alt={defaultSprite ? "Default sprite" : "No Image Available"}
       />

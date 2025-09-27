@@ -2,6 +2,7 @@ import { PlayIcon, PlusIcon, X, ChevronDown } from "lucide-react"
 import { open } from '@tauri-apps/plugin-dialog';
 import { convertFileSrc } from '@tauri-apps/api/core';
 import { useState } from "react";
+import MicSelection from "../components/Sidebar/MicSelection";  
 import { useSprites, SpriteData } from '../contexts/SpriteContext';
 
 type SidebarProps = {
@@ -79,7 +80,6 @@ export default function Sidebar({ isVisible, onToggle }: SidebarProps) {
                 
                 return (
                   <div key={index} className="bg-gray-700/50 border-1 border-gray-500 rounded p-2 group aspect-square flex flex-col relative">
-                    {/* Delete button - Top right corner, half inside/half outside */}
                     <button
                       onClick={() => removeSprite(index)}
                       className="absolute -top-1 -right-1 p-1 hover:bg-red-500 rounded-full transition-colors opacity-0 group-hover:opacity-100 z-10 bg-red-800 shadow-lg"
@@ -88,7 +88,6 @@ export default function Sidebar({ isVisible, onToggle }: SidebarProps) {
                       <X size={14} className="text-white" />
                     </button>
 
-                    {/* Image - 70% of the space */}
                     <div className="flex-[0.7] mb-2 relative">
                       <img 
                         src={convertedSrc}
@@ -101,14 +100,12 @@ export default function Sidebar({ isVisible, onToggle }: SidebarProps) {
                       />
                     </div>
                     
-                    {/* Bottom section - 30% */}
                     <div className="flex-[0.3] flex flex-col justify-between text-xs">
                       {/* Name line */}
                       <div className="text-gray-300 truncate mb-1 bg-gray-800/30 px-2 py-1 rounded">
                         {sprite.path.split(/[/\\]/).pop()}
                       </div>
                       
-                      {/* Dropdown - Full width with smaller hitbox */}
                       <div className="relative w-full">
                         <button 
                           className="flex items-center justify-between text-gray-400 hover:text-gray-200 transition-colors bg-gray-600/50 rounded px-2 py-1 w-full peer"
@@ -157,10 +154,10 @@ export default function Sidebar({ isVisible, onToggle }: SidebarProps) {
                   </div>
                 );
               })}
-
             </div>
           </div>
         )}
+        <MicSelection />
       </div>
 
     </aside>
