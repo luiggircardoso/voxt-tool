@@ -2,6 +2,12 @@
 # Voxt
 Voxt tool is a small app that is made with PNGTubbing in mind.
 
+> [!WARNING]  
+> You will need a functional microphone for this. 
+
+## How does it work?
+
+Using two PNGs of your choosing, it can make the bridge for you to use them as an actual webcam in OBS. If you click Ctrl+Space the Show Mode will be on and you'll be able to add it as an element using the Window Capture element in OBS with the Chroma Key filter. 
 
 ## How to Test
 
